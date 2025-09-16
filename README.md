@@ -66,11 +66,6 @@ Installation
 
 4. Run all cells to launch the app
 
-
-
-
----
-
 ▶️ How to Run
 
 1. Open the notebook in Google Colab
