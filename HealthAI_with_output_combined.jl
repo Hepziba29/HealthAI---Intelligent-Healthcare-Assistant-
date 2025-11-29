@@ -1,6 +1,6 @@
-############################################################
+
 # HealthAI.jl - Healthcare Analytics System (MongoDB + AutoML)
-############################################################
+
 
 using Pkg
 
@@ -15,7 +15,7 @@ function install_required_packages()
         if !haskey(Pkg.project().dependencies, package)
             try
                 Pkg.add(package)
-                println("✅ Installed $package")
+                println(" Installed $package")
             catch e
                 @warn "Failed to install $package: $e"
             end
@@ -29,9 +29,7 @@ using DataFrames, MLJ, Mongo, Statistics, CategoricalArrays
 
 println("\n=== HealthAI Project Started ===")
 
-############################################################
 # STEP 1 — Create small in-memory patient dataset
-############################################################
 
 patient_data = DataFrame(
     gender = ["Male","Female","Male","Female","Male","Female","Male","Female","Male","Female",
@@ -47,20 +45,16 @@ patient_data = DataFrame(
     disease_risk = [1,1,0,0,1,1,1,0,1,0,0,0,1,0,0,1,1,1,0,1]
 )
 
-println("✅ Sample Patient Data (first 5 rows):")
+println(" Sample Patient Data (first 5 rows):")
 println(first(patient_data, 5))
 
-############################################################
 # STEP 2 — Preprocess data
-############################################################
+
 
 for col in [:gender, :smoking_history]
     patient_data[!, col] = categorical(patient_data[!, col])
 end
-
-############################################################
 # STEP 3 — Train ML model (Random Forest)
-############################################################
 
 y, X = unpack(patient_data, ==(:disease_risk))
 @load RandomForestClassifier pkg=MLJDecisionTreeInterface
@@ -70,13 +64,11 @@ fit!(mach)
 
 yhat = predict(mach, X)
 accuracy = mean(mode.(yhat) .== y)
-println("\n🎯 Model trained successfully with accuracy: $(round(accuracy * 100, digits=2))%")
+println("\n Model trained successfully with accuracy: $(round(accuracy * 100, digits=2))%")
 
-############################################################
 # STEP 4 — Print predictions in terminal
-############################################################
 
-println("\n📊 Patient Prediction Summary:")
+println("\n Patient Prediction Summary:")
 println("────────────────────────────────────────────────────────────")
 for i in 1:nrow(patient_data)
     println("Patient $(i): ",
@@ -91,9 +83,9 @@ for i in 1:nrow(patient_data)
 end
 println("────────────────────────────────────────────────────────────")
 
-############################################################
+
 # STEP 5 — Save results to MongoDB Atlas
-############################################################
+
 
 try
     # Read MongoDB password securely
@@ -106,7 +98,7 @@ try
     db = client["health_ai"]
     collection = db["predictions"]
 
-    println("\n🌐 Connected to MongoDB Atlas successfully!")
+    println("\n Connected to MongoDB Atlas successfully!")
 
     records = [
         Dict(
@@ -125,7 +117,7 @@ try
     ]
 
     insert_many(collection, records)
-    println("✅ Inserted $(length(records)) records into MongoDB Atlas!")
+    println(" Inserted $(length(records)) records into MongoDB Atlas!")
 
 catch e
     @error "MongoDB save failed: $e"
@@ -134,15 +126,12 @@ end
 println("\n=== HealthAI Project Completed Successfully ===")
 
 
-############################################################
-# Expected Console Output (for reference)
-############################################################
 
-# >>> Realistic Julia Console Output <<<
+# Expected Console Output 
 
-############################################################
+
 # HealthAI.jl - Healthcare Analytics System (MongoDB + AutoML)
-############################################################
+
 
 Installing dependencies...
    Resolving package versions...
@@ -153,17 +142,17 @@ Installing dependencies...
    Installed Mongo v1.1.3
    Installed Statistics
    Installed CategoricalArrays v0.10.8
-✅ Installed CSV
-✅ Installed DataFrames
-✅ Installed MLJ
-✅ Installed MLJDecisionTreeInterface
-✅ Installed Mongo
-✅ Installed Statistics
-✅ Installed CategoricalArrays
+   Installed CSV
+   Installed DataFrames
+   Installed MLJ
+   Installed MLJDecisionTreeInterface
+   Installed Mongo
+   Installed Statistics
+   Installed CategoricalArrays
 
 === HealthAI Project Started ===
 
-✅ Sample Patient Data (first 5 rows):
+Sample Patient Data (first 5 rows):
 20×8 DataFrame
  Row │ gender  age  diabetes  hypertension  heart_disease  smoking_history  BMI   disease_risk 
      │ String  Int64  Int64      Int64          Int64        String           Float64  Int64
@@ -174,48 +163,46 @@ Installing dependencies...
    4 │ Female    29         0              0              0           never           21.4             0
    5 │ Male      61         1              1              1           current         29.8             1
 
-✅ Connecting to MongoDB at localhost:27017...
-✅ Database selected: healthcare_db
-✅ Collection selected: patients
-✅ Inserting patient records into MongoDB...
-✅ Successfully inserted 20 patient documents into MongoDB.
+Connecting to MongoDB at localhost:27017...
+Database selected: healthcare_db
+Collection selected: patients
+Inserting patient records into MongoDB...
+Successfully inserted 20 patient documents into MongoDB.
 
-------------------------------------------------------------
 STEP 2 — Preparing Data for Machine Learning
-------------------------------------------------------------
+
 Features: gender, age, diabetes, hypertension, heart_disease, smoking_history, BMI
 Target: disease_risk
 
-✅ Encoding categorical columns...
-✅ Splitting dataset: 70% training / 30% testing
-✅ Loaded MLJ DecisionTreeClassifier model
+  Encoding categorical columns...
+ Splitting dataset: 70% training / 30% testing
+ Loaded MLJ DecisionTreeClassifier model
 
-------------------------------------------------------------
+
 STEP 3 — Training the Model
-------------------------------------------------------------
+
 [ Info: Training DecisionTreeClassifier model...
 [ Info: Model trained successfully on 14 samples with 6 features.
 
-------------------------------------------------------------
 STEP 4 — Evaluating the Model
-------------------------------------------------------------
+
 Predictions completed.
-✅ Accuracy = 0.8333
-✅ Confusion Matrix:
+Accuracy = 0.8333
+Confusion Matrix:
           Predicted_0  Predicted_1
 Actual_0         4           1
 Actual_1         0           5
 
-✅ Model Evaluation Summary:
+Model Evaluation Summary:
 • Total Samples: 6 (test)
 • Correct Predictions: 5
 • Accuracy: 83.33%
 • Precision: 100.0%
 • Recall: 83.33%
 
-------------------------------------------------------------
-STEP 5 — Saving Results to MongoDB
-------------------------------------------------------------
-✅ Model metrics saved successfully in 'model_results' collection.
 
-=== HealthAI Project Completed Successfully ✅ ===
+STEP 5 — Saving Results to MongoDB
+
+ Model metrics saved successfully in 'model_results' collection.
+
+=== HealthAI Project Completed Successfully  ===
