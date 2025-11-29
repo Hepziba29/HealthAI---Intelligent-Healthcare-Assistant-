@@ -92,5 +92,128 @@ Include explainability using SHAP or LIME
 Visualize top predicted diseases in Tableau dashboard
 
 Deploy permanently on Hugging Face Spaces or Streamlit Cloud
+HealthAI – Julia + MongoDB + ML (Simple README)
+
+This project loads patient data, stores it in MongoDB, and uses Julia to build a simple machine-learning model that predicts Disease Risk (Low / Medium / High).
+
+
+---
+
+1. What this project does
+
+✔ Loads patient_data.csv
+✔ Cleans and prepares data
+✔ Creates a new column: Disease_Risk
+✔ Stores all patient records in MongoDB
+✔ Trains a Decision Tree model using MLJ
+✔ Shows accuracy & confusion matrix
+✔ Saves model results back to MongoDB
+
+
+---
+
+2. Requirements
+
+Install:
+
+Julia 1.8+
+
+MongoDB (local or Atlas)
+
+Julia packages:
+
+
+using Pkg
+Pkg.add(["CSV","DataFrames","CategoricalArrays","MLJ","MLJModels","DecisionTree","Statistics","Mongo"])
+
+Place your file:
+
+patient_data.csv
+HealthAI.jl
+
+
+---
+
+3. How to run
+
+Open terminal in your project folder:
+
+julia HealthAI.jl
+
+Or inside Julia REPL:
+
+include("HealthAI.jl")
+
+
+---
+
+4. MongoDB Setup
+
+Local MongoDB:
+Use default URI:
+
+mongodb://localhost:27017
+
+Atlas (Cloud):
+Replace the URI in your script with your Atlas connection string.
+
+
+---
+
+5. Expected Output
+
+When your script runs, you will see:
+
+First few rows of patient data
+
+Confirmation that patient records were inserted into MongoDB
+
+Model training logs
+
+Accuracy score
+
+Confusion matrix
+
+Message confirming results stored in MongoDB
+
+
+Example:
+
+Accuracy = 0.83
+Successfully inserted 200 records
+Model metrics saved to MongoDB
+
+
+6. File Structure
+
+/HealthAI_Project
+  patient_data.csv
+   HealthAI.jl
+    README.md
+  Tableau for patient data set
+  
+  
+
+---
+
+7. Summary
+
+This project shows a complete end-to-end pipeline:
+
+1. Data →
+
+
+2. Store →
+
+
+3. Train Model →
+
+
+4. Evaluate →
+
+
+5. Save Results
+
+
 
 
