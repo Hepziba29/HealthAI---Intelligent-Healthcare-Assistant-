@@ -1,4 +1,4 @@
-# HealthAI---Intelligent-Healthcare-Assistant with anlysis using Julia and AutoML
+# HealthAI---Intelligent-Healthcare-Assistant with analysis using Julia and AutoML
 
  HealthAI – Intelligent Healthcare Assistant
 
