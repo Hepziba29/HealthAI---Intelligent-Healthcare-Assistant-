@@ -1,11 +1,11 @@
 # HealthAI---Intelligent-Healthcare-Assistant-
 
-🏥 HealthAI – Intelligent Healthcare Assistant
+ HealthAI – Intelligent Healthcare Assistant
 
 HealthAI is an AI-powered healthcare assistant that predicts diseases based on user symptoms and provides treatment recommendations. It uses IBM Granite models from Hugging Face for natural language understanding and is deployed using Gradio for an interactive user interface.
 
 
-📌 Project Overview
+Project Overview
 
 Goal: Make healthcare guidance accessible, fast, and easy-to-understand
 
@@ -14,15 +14,15 @@ Model Used: ibm-granite/granite-3.2-2b-instruct
 Platform: Google Colab (T4 GPU)
 
 Frontend: Gradio Web App
-✨ Features
+Features
 
-✅ Symptom-Based Disease Prediction – ML-driven predictions for possible conditions
-✅ AI Treatment Recommendations – Suggests next steps (self-care/consult a doctor)
-✅ Conversational Interface – Users can chat naturally with the AI
-✅ Fast & Accessible – Runs in Google Colab with shareable Gradio link
-✅ Scalable – Can be enhanced with additional datasets & models
+ Symptom-Based Disease Prediction – ML-driven predictions for possible conditions
+ AI Treatment Recommendations – Suggests next steps (self-care/consult a doctor)
+Conversational Interface – Users can chat naturally with the AI.    
+ Fast & Accessible – Runs in Google Colab with shareable Gradio link
+ Scalable – Can be enhanced with additional datasets & models
 
-🏗️ Project Architecture
+Project Architecture
 
 flowchart TD
     A[User Inputs Symptoms] --> B[Gradio Frontend]
@@ -32,7 +32,7 @@ flowchart TD
     E --> F[Gradio Output Display]
 
 
-🛠️ Tech Stack
+ Tech Stack
 
 Programming Language: Python 3.8+
 
@@ -42,7 +42,7 @@ Platform: Google Colab
 
 AI Model: IBM Granite (Hugging Face)
 
-⚙️ Setup Instructions
+Setup Instructions
 
 Prerequisites
 
@@ -66,7 +66,7 @@ Installation
 
 4. Run all cells to launch the app
 
-▶️ How to Run
+How to Run
 
 1. Open the notebook in Google Colab
 
@@ -83,7 +83,7 @@ Installation
 5. Get predicted disease and treatment recommendations
 
 
-🚀 Future Enhancements
+ Future Enhancements
 
 Add statistical probability calculation (logistic regression, chi-square)
 
