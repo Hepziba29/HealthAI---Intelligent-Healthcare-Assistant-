@@ -1,4 +1,4 @@
-# HealthAI---Intelligent-Healthcare-Assistant-
+# HealthAI---Intelligent-Healthcare-Assistant with anlysis using Julia and AutoML
 
  HealthAI – Intelligent Healthcare Assistant
 
@@ -100,14 +100,13 @@ This project loads patient data, stores it in MongoDB, and uses Julia to build a
 ---
 
 1. What this project does
-
-✔ Loads patient_data.csv
-✔ Cleans and prepares data
-✔ Creates a new column: Disease_Risk
-✔ Stores all patient records in MongoDB
-✔ Trains a Decision Tree model using MLJ
-✔ Shows accuracy & confusion matrix
-✔ Saves model results back to MongoDB
+ Loads patient_data.csv
+Cleans and prepares data
+Creates a new column: Disease_Risk
+Stores all patient records in MongoDB
+Trains a Decision Tree model using MLJ
+Shows accuracy & confusion matrix
+Saves model results back to MongoDB
 
 
 ---
